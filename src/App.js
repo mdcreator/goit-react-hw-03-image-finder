@@ -4,8 +4,8 @@ import { Component } from 'react';
 
 import Searchbar from './components/Searchbar';
 import ImageGallery from './components/ImageGallery';
-import Button from './components/Button';
 import Loader from './components/Loader';
+import Button from './components/Button';
 // import Modal from './components/Modal';
 import Api from './services/api';
 
@@ -96,12 +96,6 @@ class App extends Component {
       .catch(error => this.setState({ error, status: 'reject' }));
   };
 
-  // toggleModal = () => {
-  //   this.setState(({ showModal }) => ({
-  //     showModal: !showModal,
-  //   }));
-  // };
-
   render() {
     const { status, gallery, error } = this.state;
 
@@ -147,23 +141,6 @@ class App extends Component {
           <Searchbar onSubmit={this.handleSearchForm} />
           <ImageGallery gallery={gallery} onClose={this.props.toggleModal} />
           <Button onClick={this.handleLoadMore} />
-
-          {/* {this.state.showModal && (
-            <Modal>
-              <img
-                src={this.state.largeImageURL}
-                alt={this.props.alt}
-                // onLoad={this.toggleLoad}
-              />
-     
-            </Modal>
-          )} */}
-          {/* {this.state.showModal && (
-            <Modal
-              onClose={this.props.toggleModal}
-              largeImageURL={this.state.largeImageURL}
-            />
-          )} */}
         </Container>
       );
     }

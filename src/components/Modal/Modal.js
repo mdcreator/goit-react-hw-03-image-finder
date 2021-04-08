@@ -1,15 +1,15 @@
 import { Component } from 'react';
 import { createPortal } from 'react-dom';
-
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import PropTyps from 'prop-types';
-import Loader from '../Loader';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
 class Modal extends Component {
   static PropTyps = {
-    largeImageURL: PropTyps.string.isRequired,
+    onClose: PropTyps.func.isRequired,
   };
 
   state = {
@@ -18,7 +18,6 @@ class Modal extends Component {
   };
 
   componentDidMount() {
-    // this.setState({ isLoading: true });
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
@@ -32,27 +31,6 @@ class Modal extends Component {
     }
   };
 
-  toggleModal = () => {
-    this.setState(({ showModal }) => ({
-      showModal: !showModal,
-    }));
-  };
-
-  toggleLoad = () => {
-    this.setState(({ isLoading }) => ({
-      isLoading: !isLoading,
-    }));
-  };
-
-  onOpenModal = e => {
-    this.setState({ largeImageURL: e.target.dataset.source });
-    this.toggleModal();
-  };
-  // handleImageLoaded = e => {
-  //     this.setState({ isLoading: false });
-  //   }
-  // };
-
   handleBackdropClick = e => {
     if (e.currentTarget === e.turget) {
       this.props.onClose();
@@ -65,10 +43,10 @@ class Modal extends Component {
         <div className={s.Modal}>
           {/* {this.props.children} */}
           <img
-            src={this.props.largeImageURL}
+            src={this.props.src}
             alt={this.props.alt}
-            onClose={this.toggleModal}
-            onLoad={this.toggleLoad}
+            // onClose={this.toggleModal}
+            // onLoad={this.handleImageLoaded}
           />
           {this.state.isLoading && (
             <Loader type="Grid" color="#3f51b5" height={80} width={80} />
