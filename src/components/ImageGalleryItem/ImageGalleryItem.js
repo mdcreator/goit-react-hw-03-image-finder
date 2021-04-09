@@ -18,8 +18,8 @@ class ImageGalleryItem extends Component {
   };
 
   toggleModal = () => {
-    this.setState(prevState => {
-      return { showModal: !prevState.showModal };
+    this.setState(({ showModal }) => {
+      return { showModal: !showModal };
     });
   };
 

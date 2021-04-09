@@ -7,7 +7,7 @@ class Api extends Component {
   render() {
     return (
       <Loader
-        type="Grid"
+        type="Hearts"
         color="#00BFFF"
         height={80}
         width={80}

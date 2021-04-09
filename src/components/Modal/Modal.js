@@ -10,11 +10,14 @@ const modalRoot = document.querySelector('#modal-root');
 class Modal extends Component {
   static PropTyps = {
     onClose: PropTyps.func.isRequired,
+    src: PropTyps.string.isRequired,
+    alt: PropTyps.string.isRequired,
   };
 
   state = {
     isLoading: false,
-    showModal: false,
+
+    // showModal: false,
   };
 
   componentDidMount() {
@@ -37,19 +40,25 @@ class Modal extends Component {
     }
   };
 
+  handleImageLoaded = () => {
+    this.setState({ isLoading: false });
+  };
+
   render() {
+    const { src, alt } = this.props;
+    const { isLoading } = this.state;
     return createPortal(
       <div className={s.Overlay} onClick={this.handleBackdropClick}>
         <div className={s.Modal}>
           {/* {this.props.children} */}
           <img
-            src={this.props.src}
-            alt={this.props.alt}
+            src={src}
+            alt={alt}
             // onClose={this.toggleModal}
-            // onLoad={this.handleImageLoaded}
+            onLoad={this.handleImageLoaded}
           />
-          {this.state.isLoading && (
-            <Loader type="Grid" color="#3f51b5" height={80} width={80} />
+          {isLoading && (
+            <Loader type="Grid" color="#00BFFF" height={80} width={80} />
           )}
         </div>
       </div>,
