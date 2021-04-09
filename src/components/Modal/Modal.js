@@ -15,7 +15,7 @@ class Modal extends Component {
   };
 
   state = {
-    isLoading: false,
+    isLoading: true,
 
     // showModal: false,
   };
