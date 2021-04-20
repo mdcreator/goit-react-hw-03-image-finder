@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import s from './Button.module.css';
 import PropTypes from 'prop-types';
 import s from './Button.module.css';
 
@@ -8,7 +7,7 @@ class Button extends Component {
     onClick: PropTypes.func,
   };
 
-  // state = {};
+  state = {};
   render() {
     return (
       <button type="button" className={s.Button} onClick={this.props.onClick}>

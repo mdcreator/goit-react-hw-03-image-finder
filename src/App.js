@@ -20,7 +20,7 @@ class App extends Component {
     page: 1,
     error: null,
     status: 'idle',
-    showModal: false,
+    // showModal: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -29,7 +29,12 @@ class App extends Component {
     const page = this.state.page;
 
     if (prevQuery !== nextQuery) {
-      this.setState({ gallery: [], page: 1, error: null });
+      this.setState({
+        status: 'pending',
+        gallery: [],
+        page: 1,
+        error: null,
+      });
 
       Api.fetchImage(nextQuery, page)
         // .then(query => this.setState({ query, status: 'resolved' }))
@@ -104,7 +109,7 @@ class App extends Component {
         <Container>
           <Searchbar onSubmit={this.handleSearchForm} />
           <div>
-            <p> Проверим? 😜</p>
+            <p> Нужно проверить... 😜</p>
             <img src={cover} alt="cover" />
           </div>
         </Container>
