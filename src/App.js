@@ -31,9 +31,9 @@ class App extends Component {
     if (prevQuery !== nextQuery) {
       this.setState({
         status: 'pending',
-        gallery: [],
-        page: 1,
-        error: null,
+        // gallery: [],
+        // page: 1,
+        // error: null,
       });
 
       Api.fetchImage(nextQuery, page)
